@@ -1,0 +1,13 @@
+# imported modules
+node_modules
+
+.trunk
+
+# lock files
+yarn.lock
+package-lock.json
+
+config/*
+logs/
+*.log
+yarn-error.log
