@@ -1,0 +1,20 @@
+{
+    "host": {
+        "url": "http://localhost:5060"
+    },
+    "port": "5660",
+    "env": "development",
+    "mongo": {
+        "host": "127.0.0.1",
+        "port": "27017",
+        "user": "credit_tail",
+        "db": "credit-tail-db",
+        "atlas": {
+            "user": "credit_tail",
+            "passcode": "zs3bbyEt8SsbDjFT",
+            "cluster": "cluster0.tykh8jq.mongodb.net",
+            "database": "credit-tail-db",
+            "url":"mongodb+srv://credit_tail:zs3bbyEt8SsbDjFT@cluster0.tykh8jq.mongodb.net/credit-tail-db?retryWrites=true&w=majority"
+        }
+    }
+}
