@@ -19,7 +19,7 @@ async function getCustomersBySalesId(queryParams){
 
 async function getCustomerByCustomerId(queryParams){
     const { customerId } = queryParams;
-    const customer = await CustomerDetails.findOne({_id: customerId})
+    const customer = await CustomerDetails.findById(customerId)
     return customer;
 }
 
