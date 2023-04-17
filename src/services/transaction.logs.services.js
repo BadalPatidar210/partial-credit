@@ -9,7 +9,8 @@ async function addTransactionByCustomer(requestBody){
     if(customerDetails!= null && customerDetails.totalAmount >= paidAmount) {
         let pendingAmount = customerDetails.totalAmount - paidAmount;
         const transactionLog =  await TransactionLogs.create({
-            customerId:customerDetails._id,
+            customerId:customerDetails.customerId,
+            customerName:customerDetails.customerName,
             totalAmount:customerDetails.totalAmount,
             paymentStatus: 'SUCCESS',
             installmentCount: customerDetails.installmentCount +1,
@@ -17,7 +18,10 @@ async function addTransactionByCustomer(requestBody){
             paidAmount,
             pendingAmount,
         })
-        return transactionLog;
+        return {
+            transactionLog,
+            customerName: customerDetails.customerName
+        };
     }
     return null;
 }

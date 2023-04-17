@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const customerDetails = new mongoose.Schema(
-    {
+    {   
+        customerId:{
+            type:'String',
+            unique:true
+        },
         customerName:{
             type: String,
         },
@@ -23,6 +27,6 @@ const customerDetails = new mongoose.Schema(
     }
 )
 
-customerDetails.virtual('customerId').get(function () { return this._id.toString(); });
+// customerDetails.virtual('customerId').get(function () { return this._id.toString(); });
 
 module.exports = mongoose.model('CustomerDetails', customerDetails)

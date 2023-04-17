@@ -1,8 +1,11 @@
+const { PasscodeGenerator } = require('../libs/passcodes/generate.passcode');
 const CustomerDetails = require('../models/customer.details.model');
 
 async function addCustomer(requestBody){
     const {customerName, salesRepresentativeId, salesRepresentativeName, totalAmount, installmentCount} = requestBody;
+    const customerId = PasscodeGenerator.generateCustomerId();
     await CustomerDetails.create({
+        customerId,
         customerName,
         salesRepresentativeId,
         salesRepresentativeName,
@@ -19,7 +22,7 @@ async function getCustomersBySalesId(queryParams){
 
 async function getCustomerByCustomerId(queryParams){
     const { customerId } = queryParams;
-    const customer = await CustomerDetails.findById(customerId)
+    const customer = await CustomerDetails.findOne({customerId})
     return customer;
 }
 
@@ -30,7 +33,7 @@ async function updateCustomer(customerDetails){
     }
 
     try {
-      const filter = { _id: customerDetails.customerId };
+      const filter = { customerId: customerDetails.customerId };
       const update = { $set: newCustomerDetails };
 
       await CustomerDetails.updateOne(filter, update);

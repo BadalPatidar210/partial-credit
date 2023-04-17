@@ -11,13 +11,13 @@ const addCustomerValidator = {
 }
 
 const getCustomerValidator = {
-    params: Joi.object().keys({
-        customerId: Joi.string(),
+    query: Joi.object().keys({
+        customerId: Joi.string().required(),
     })
 }
 
 const getCustomersValidator = {
-    params:  Joi.object().keys({
+    query:  Joi.object({
         salesRepresentativeId: Joi.string().required(),
     })
 }

@@ -6,8 +6,8 @@ const transactionLogs = new mongoose.Schema(
             type: String,
         },
         customerId:{
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: 'CustomerDetails'
+            type: String,
+            ref:'CustomerDetails',
         },
         totalAmount:{
             type:Number,

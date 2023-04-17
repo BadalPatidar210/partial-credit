@@ -8,7 +8,11 @@ const router = express.Router();
 
 router.post('/pay',validate(TransactionLogsValidators.addTransactionByCustomerValidator), async (req,res) =>{
     try{
-        const data = await TransactionLogsServices.addTransactionByCustomer(req.body);
+        const {transactionLog,customerName} = await TransactionLogsServices.addTransactionByCustomer(req.body);
+        let data = {
+            ...transactionLog._doc,
+            customerName: customerName
+        }
         if(data != null && data != 'undefined'){
             await CustomerDetailsServices.updateCustomer(data)
             res.send({
